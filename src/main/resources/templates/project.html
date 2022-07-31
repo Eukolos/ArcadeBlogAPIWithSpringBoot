@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog :: Post</title>
+</head>
+<body>
+<div class="container">
+
+    <div class="project">
+        <h2><a th:href="@{'/'}">Home</a> </h2>
+        <h2 th:text="${project.title}">Title</h2>
+        <h5 th:text="'Created on' + ${project.createdAt}">Created At</h5>
+        <p th:text="${project.body}">body text</p>
+    </div>
+
+</div>
+
+</body>
+</html>
