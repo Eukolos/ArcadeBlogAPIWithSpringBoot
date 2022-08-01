@@ -13,12 +13,17 @@
         <div class="projects-container">
             <div class ="project" th:each="project : ${projects}">
                 <h2><a th:href="@{'/projects/' + ${project.id}}" th:text="${project.title}">title</a> </h2>
-                <h5 th:text="'published on' + ${project.createdAt}">Created At</h5>
+                <h5 th:text="'Written by ' + ${project.accountModel.firstName}">First Name</h5>
+                <h5 th:text="'published on ' + ${project.createdAt}">Created At</h5>
                 <p th:text="${project.body}">Body Text</p>
                 <br/>
             </div>
         </div>
-
+        <hr/>
+        <ul >
+            <li><a th:href="@{/register}">Register</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+        </ul>
     </div>
 </body>
 </html>
