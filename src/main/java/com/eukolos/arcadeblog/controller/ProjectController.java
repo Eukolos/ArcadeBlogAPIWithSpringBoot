@@ -1,6 +1,8 @@
 package com.eukolos.arcadeblog.controller;
 
+import com.eukolos.arcadeblog.model.AccountModel;
 import com.eukolos.arcadeblog.model.ProjectModel;
+import com.eukolos.arcadeblog.service.AccountService;
 import com.eukolos.arcadeblog.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +17,11 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    private AccountService accountService;
+
     @GetMapping("/projects/{id}")
-    public String getPost(@PathVariable Long id, Model model){
+    public String getProject(@PathVariable Long id, Model model){
         // find project by id
         Optional<ProjectModel> optionalProjectModel = projectService.getById(id);
 
@@ -28,5 +33,18 @@ public class ProjectController {
             return "404";
         }
 
+    }
+
+    @GetMapping("/projects/new")
+    public String createNewProject(Model model) {
+        Optional<AccountModel> optionalAccountModel = accountService.findByEmail("user.user@arcade.com");
+        if(optionalAccountModel.isPresent()){
+            ProjectModel projectModel = new ProjectModel();
+            projectModel.setAccountModel(optionalAccountModel.get());
+            model.addAttribute("projectModel", projectModel);
+            return "project_new";
+        } else {
+            return "404";
+        }
     }
 }
