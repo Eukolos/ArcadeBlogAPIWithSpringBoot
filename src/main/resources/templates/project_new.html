@@ -12,7 +12,7 @@
   <form action="#"
         th:action="@{'/projects/new'}"
         th:object="${projectModel}"
-        method="post">
+        method="POST">
     <input type="hidden" th:field="*{accountModel}" />
     <input type="hidden" th:field="*{createdAt}" />
     <h2>Write new Post</h2>

@@ -11,6 +11,9 @@
         <h1>Arcade Blog</h1>
         <hr/>
         <div class="projects-container">
+            <ul>
+                <li><a th:href="@{/projects/new}">New Projects</a></li>
+            </ul>
             <div class ="project" th:each="project : ${projects}">
                 <h2><a th:href="@{'/projects/' + ${project.id}}" th:text="${project.title}">title</a> </h2>
                 <h5 th:text="'Written by ' + ${project.accountModel.firstName}">First Name</h5>
